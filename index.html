@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>für Liebe Sana</title>
+<style>
+  :root { color-scheme: dark; }
+  html, body { margin: 0; height: 100%; background: #000; }
+  body { display: flex; align-items: center; justify-content: center; }
+  .wrap { position: relative; height: 100%; max-width: 100%; aspect-ratio: 9 / 16; }
+  video { width: 100%; height: 100%; object-fit: contain; background: #000; display: block; }
+  #tap { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+         background: rgba(0,0,0,.45); color: #ffd6e8; font: 18px/1.3 system-ui, sans-serif; cursor: pointer; border: 0; width: 100%; }
+  #tap span { padding: 14px 22px; border: 1px solid #ff7aa8; border-radius: 999px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <video id="v" src="lily.mp4" playsinline loop controls autoplay muted></video>
+  <button id="tap" aria-label="Play with sound"><span>&#9654; Tap to play with sound</span></button>
+</div>
+<script>
+  var v = document.getElementById('v'), t = document.getElementById('tap');
+  t.addEventListener('click', function () {
+    v.muted = false; v.currentTime = 0; v.play(); t.style.display = 'none';
+  });
+  v.addEventListener('play', function () { if (!v.muted) t.style.display = 'none'; });
+</script>
+</body>
+</html>
